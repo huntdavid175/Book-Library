@@ -1,19 +1,13 @@
-const title = document.querySelector("#title").value;
-const author = document.querySelector("#author").value
-// console.log(title, author)
+const openForm = document.querySelector(".main-button");
+const modal = document.querySelector(".modal-container");
+const closeModal = document.querySelector(".close")
 
 
+openForm.addEventListener("click",function(e){
+    modal.style.display = "flex"
+})
 
-
-// Create a Constructor for the book objects 
-
-function Book(title,author,pages,status){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = status;
-}
-
-let book = new Book(title,author)
-console.log(book)
+closeModal.addEventListener("click", function(){
+    modal.style.display = "none"
+})
 

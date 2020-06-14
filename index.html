@@ -9,8 +9,26 @@
 <body>
    <div class="container">
        <div class="header">
-           <h4 class="logo">Lib</h4>
+           <h4 class="logo">Lib<span id="dot">.</span></h4>
            <span class="main-button">Add Book</span>
+       </div>
+   </div>
+
+   <!-- Modal Here  -->
+
+   <div class="modal-container">
+       <div class="modal">
+           <div class="modal-close-section"><span class="close">X</span></div>
+           <div class="modal-title">
+               <h4>ADD BOOK</h4>
+           </div>
+           <div class="modal-form">
+               <input type="text" class="form-input" id="title" name="title" placeholder="Book Title">
+               <input type="text" class="form-input" id="author" name="author" placeholder="Book Author">
+               <input type="text" class="form-input" id="pages" name="pages" placeholder="Number of pages">
+               <span class="secondary-button">Add Book</span>
+           </div>
+
        </div>
    </div>
 </body>
