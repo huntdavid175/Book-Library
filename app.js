@@ -30,10 +30,7 @@ inputs.forEach(function(input){
 
 openForm.addEventListener("click",function(e){
     modal.style.display = "flex"
-    inputs.forEach(function(input){
-        input.value = ""
-        input.style.borderColor = "gray"
-    })
+    clearInputs()
 })
 
 // CLose Modal functionality 
@@ -46,7 +43,8 @@ closeModal.addEventListener("click", function(){
 
 submitBtn.addEventListener("click",function(e){
     if(checkIfInputsEmpty() == true){
-        console.log("form submitted")
+        addBook()
+        clearInputs()
     }
 });
 
@@ -85,6 +83,15 @@ function checkIfInputsEmpty(){
     }
 }
 
+// Clear inputs function 
+
+function clearInputs(){
+    inputs.forEach(function(input){
+        input.value = ""
+        input.style.borderColor = "gray"
+    })
+}
+
 // Constructor for books 
 
 function Book(title, author, pages, status){
@@ -94,3 +101,14 @@ function Book(title, author, pages, status){
     this.isRead = status;
 }
 
+// Collect Input Fields 
+let bookArray = []
+function addBook(){
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const status = document.querySelector("#read").checked
+
+    let book = new Book(title,author,pages,status);
+    bookArray.push(book)
+}
