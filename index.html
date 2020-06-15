@@ -14,18 +14,21 @@
        </div>
        <div class="cards-section">
            <div class="card">
-               <h2 id="title">The Painted House and the Ghosts</h2>
-               <h4 id="author">John Grisham</h4>
-               <p id="pages">569 pages</p>
-               <span id="status">Read</span>
+               <h2 id="card-title">The Painted House and the Ghosts</h2>
+               <h4 id="card-author">John Grisham</h4>
+               <p id="card-pages">569 pages</p>
+               <span id="card-status">Read</span>
                <button class="delete-book">Delete</button>
            </div>
           
        </div>
+       
    </div>
 
 
+ <!-- Toasters Here  -->
 
+ <div id="toaster">Please fill all fields</div>
 
    <!-- Modal Here  -->
 
@@ -39,10 +42,15 @@
                <input type="text" class="form-input" id="title" name="title" placeholder="Book Title">
                <input type="text" class="form-input" id="author" name="author" placeholder="Book Author">
                <input type="text" class="form-input" id="pages" name="pages" placeholder="Number of pages">
+               <div>
+                <label for="Read"> Read</label>
+                <input type="checkbox" id="vehicle2" name="Read" value="Read">
+                </div>
                <span class="secondary-button">Add Book</span>
            </div>
 
        </div>
+       
    </div>
 </body>
 <script src="app.js"></script>

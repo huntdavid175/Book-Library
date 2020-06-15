@@ -89,13 +89,13 @@ body {
     color: #373333;
 }
 
-#title {
+#card-title {
     font-size: 25px;
     margin-bottom: 10px;
     color: #573bb5;
 }
 
-#author {
+#card-author {
     font-size: 20px;;
     margin-bottom: 20px;
 }
@@ -196,5 +196,46 @@ body {
 .secondary-button:hover {
 	background-color: #333;
 }
+
+#toaster {
+	width: 250px;
+	background-color: #4a4;
+	text-align: center;
+	color: #ffffff;
+	padding: 14px;
+	border-radius: 10px;
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -125px;
+	visibility: hidden;
+	z-index: 50;
+}
+
+#toaster.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  @-webkit-keyframes fadein {
+	from {bottom: 0; opacity: 0;} 
+	to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+	from {bottom: 0; opacity: 0;}
+	to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+	from {bottom: 30px; opacity: 1;} 
+	to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+	from {bottom: 30px; opacity: 1;}
+	to {bottom: 0; opacity: 0;}
+  }
 
 
