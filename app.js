@@ -4,6 +4,7 @@ const closeModal = document.querySelector(".close");
 const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector(".secondary-button")
 const toaster = document.querySelector("#toaster");
+const cardSection = document.querySelector(".cards-section")
 
 
 // Change input fields border color when null and when not null
@@ -111,4 +112,31 @@ function addBook(){
 
     let book = new Book(title,author,pages,status);
     bookArray.push(book)
+    showBook()
+}
+
+// Add books to page 
+
+function showBook(){
+   cardSection.innerHTML = `${bookArray.map(function(book){
+       return `
+       <div class="card">
+               <h2 id="card-title">${book.title}</h2>
+               <h4 id="card-author">${book.author}</h4>
+               <p id="card-pages">${book.pages} pages</p>
+               <span id="card-status">${isRead(book)}</span>
+               <button class="delete-book">Delete</button>
+           </div>
+       `
+   }).join("")}`
+}
+
+
+function isRead(book){
+    if(book.isRead == true){
+        return "Read"
+    }
+    else{
+        return "Not Read"
+    }
 }
