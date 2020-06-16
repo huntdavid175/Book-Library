@@ -1,57 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <title>Book Library</title>
-</head>
-<body>
-   <div class="container">
-       <div class="header">
-           <h4 class="logo">Lib<span id="dot">.</span></h4>
-           <span class="main-button">Add Book</span>
-       </div>
-       <div class="cards-section">
-           <!-- <div class="card">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<title>Book Library</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h4 class="logo">Lib<span id="dot">.</span></h4>
+				<span class="main-button">Add Book</span>
+			</div>
+			<div class="cards-section">
+				<!-- <div class="card">
                <h2 id="card-title">The Painted House and the Ghosts</h2>
                <h4 id="card-author">John Grisham</h4>
                <p id="card-pages">569 pages</p>
                <span id="card-status">Read</span>
+               <input type="checkbox" id="read-update" name="read" value="Read">
                <button class="delete-book">Delete</button>
            </div> -->
-          
-       </div>
-       
-   </div>
+			</div>
+		</div>
 
+		<!-- Toasters Here  -->
 
- <!-- Toasters Here  -->
+		<div id="toaster">Please fill all fields</div>
 
- <div id="toaster">Please fill all fields</div>
+		<!-- Modal Here  -->
 
-   <!-- Modal Here  -->
-
-   <div class="modal-container">
-       <div class="modal">
-           <div class="modal-close-section"><span class="close">X</span></div>
-           <div class="modal-title">
-               <h4>ADD BOOK</h4>
-           </div>
-           <div class="modal-form">
-               <input type="text" class="form-input" id="title" name="title" placeholder="Book Title">
-               <input type="text" class="form-input" id="author" name="author" placeholder="Book Author">
-               <input type="text" class="form-input" id="pages" name="pages" placeholder="Number of pages">
-               <div>
-                <label for="read"> Read</label>
-                <input type="checkbox" id="read" name="read" value="Read">
-                </div>
-               <span class="secondary-button">Add Book</span>
-           </div>
-
-       </div>
-       
-   </div>
-</body>
-<script src="app.js"></script>
+		<div class="modal-container">
+			<div class="modal">
+				<div class="modal-close-section"><span class="close">X</span></div>
+				<div class="modal-title">
+					<h4>ADD BOOK</h4>
+				</div>
+				<div class="modal-form">
+					<input
+						type="text"
+						class="form-input"
+						id="title"
+						name="title"
+						placeholder="Book Title"
+					/>
+					<input
+						type="text"
+						class="form-input"
+						id="author"
+						name="author"
+						placeholder="Book Author"
+					/>
+					<input
+						type="text"
+						class="form-input"
+						id="pages"
+						name="pages"
+						placeholder="Number of pages"
+					/>
+					<div>
+						<label for="read"> Read</label>
+						<input type="checkbox" id="read" name="read" value="Read" />
+					</div>
+					<span class="secondary-button">Add Book</span>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="app.js"></script>
 </html>

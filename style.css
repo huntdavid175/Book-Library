@@ -63,55 +63,62 @@ body {
 }
 
 .cards-section {
-    width: 90%;
-    margin: 50px auto;
-    display: flex;
-    /* justify-content: space-evenly; */
-    flex-wrap: wrap;
-    /* background-color: red; */
-    padding: 10px;
-    overflow: auto;
+	width: 90%;
+	margin: 50px auto;
+	display: flex;
+	/* justify-content: space-evenly; */
+	flex-wrap: wrap;
+	/* background-color: red; */
+	padding: 10px;
+	overflow: auto;
 }
 
 .card {
-    width: 250px;
-    height: 300px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: flex-start;
-    background-color: #b4a9d9;;
-    margin: 10px;
-    padding-top: 45px;
-    border-radius: 8px;
-    color: #373333;
+	width: 250px;
+	height: 300px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: flex-start;
+	background-color: #b4a9d9;
+	margin: 10px;
+	padding-top: 45px;
+	border-radius: 8px;
+	color: #373333;
 }
 
 #card-title {
-    font-size: 25px;
-    margin-bottom: 10px;
-    color: #573bb5;
+	font-size: 25px;
+	margin-bottom: 10px;
+	color: #573bb5;
 }
 
 #card-author {
-    font-size: 20px;;
-    margin-bottom: 20px;
+	font-size: 20px;
+	margin-bottom: 20px;
 }
 
 .delete-book {
-    padding: 2px 5px;
-    background-color: blueviolet;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
+	padding: 2px 5px;
+	background-color: blueviolet;
+	color: #ffffff;
+	border: none;
+	border-radius: 10px;
+	margin-top: 15px;
+	cursor: pointer;
 }
 
 .delete-book:hover {
-    background-color: rgb(148, 23, 23);
+	background-color: rgb(148, 23, 23);
+}
+
+#card-footer {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 0;
 }
 
 /* Modal style  */
@@ -129,7 +136,7 @@ body {
 	align-items: center;
 	z-index: 10;
 	background-color: rgba(132, 106, 221, 0.7);
-    display: none;
+	display: none;
 }
 
 .modal {
@@ -144,13 +151,13 @@ body {
 }
 
 .close {
-    font-size: 20px;
-    color: #333333;
-    cursor: pointer;
+	font-size: 20px;
+	color: #333333;
+	cursor: pointer;
 }
 
 .close:hover {
-    color: #ffffff;
+	color: #ffffff;
 }
 
 .modal-title {
@@ -216,26 +223,48 @@ body {
 	visibility: visible;
 	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
 	animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
+}
 
-  @-webkit-keyframes fadein {
-	from {bottom: 0; opacity: 0;} 
-	to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-	from {bottom: 0; opacity: 0;}
-	to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-	from {bottom: 30px; opacity: 1;} 
-	to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-	from {bottom: 30px; opacity: 1;}
-	to {bottom: 0; opacity: 0;}
-  }
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
 
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
 
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
