@@ -98,11 +98,17 @@ function Book(title, author, pages, status) {
 }
 
 Book.prototype.updateStatus = function (state) {
+	if (state == true) {
+		state = "Read";
+	} else {
+		state = "Not Read";
+	}
 	return (this.isRead = state);
 };
 
 // Collect Input Fields
 let bookArray = [];
+// let book;
 function addBook() {
 	const title = document.querySelector("#title").value;
 	const author = document.querySelector("#author").value;
@@ -118,14 +124,19 @@ function addBook() {
 
 function showBook() {
 	cardSection.innerHTML = `${bookArray
-		.map(function (book,i) {
+		.map(function (book, i) {
 			return `
        <div class="card" data-book-index= "${i}">
                <h2 id="card-title">${book.title}</h2>
                <h4 id="card-author">${book.author}</h4>
                <p id="card-pages">${book.pages} pages</p>
-               <span id="card-status">${isRead(book)}</span>
-               <input type="checkbox" class="read-update" name="read" value="Read">
+			   <span id="card-status">${isRead(book)}</span>
+			   ${
+						(isRead(book) == "Read" &&
+							`<input type="checkbox" class="read-update" name="read" value="Read" checked>`) ||
+						(isRead(book) == "Not Read" &&
+							`<input type="checkbox" class="read-update" name="read" value="Read">`)
+					}
                <button class="delete-book">Delete</button>
            </div>
        `;
@@ -138,39 +149,50 @@ function showBook() {
 function isRead(book) {
 	if (book.isRead == true) {
 		return "Read";
-	} else {
+	} else if (book.isRead == false) {
 		return "Not Read";
+	} else {
+		return book.isRead;
 	}
 }
 
-document.body.addEventListener("click",function(e){
-    if (e.target.className == "read-update"){
-        console.log(e.target.checked);
-    }
+document.body.addEventListener("click", function (e) {
+	if (e.target.className == "read-update") {
+		// console.log(e.target.checked);
+		let status = e.target.checked;
+		console.log(status);
+		const checkIndex = e.target.parentNode.dataset.bookIndex;
+		console.log(checkIndex);
+		bookArray[checkIndex].updateStatus(status);
+		// e.target.parentNode.getElementById("card-status").textContent = bookArray[checkIndex].isRead
+		e.target.parentElement.querySelector("#card-status").textContent =
+			bookArray[checkIndex].isRead;
+		// console.log(bookArray[checkIndex].isRead)
+		// showBook()
+	}
 
-    if(e.target.className == "delete-book"){
-       const cardIndex = e.target.parentNode.dataset.bookIndex;
-       deleteBook(cardIndex);
-       showBook()
-       deleteBookPopup()
-    }
-})
+	if (e.target.className == "delete-book") {
+		const cardIndex = e.target.parentNode.dataset.bookIndex;
+		deleteBook(cardIndex);
+		showBook();
+		deleteBookPopup();
+	}
+});
 
+// Delete book function
 
-// Delete book function 
-
-function deleteBook(index){
-    bookArray.splice(index, 1)
+function deleteBook(index) {
+	bookArray.splice(index, 1);
 }
 
-// Deleted book popup 
+// Deleted book popup
 
-function deleteBookPopup(){
-    toaster.textContent = "Book Deleted";
-		toaster.style.backgroundColor = "#f2dede";
-		toaster.style.color = "#a94442";
-		toaster.className = "show";
-		setTimeout(function () {
-			toaster.classList.remove("show");
-		}, 2000);
+function deleteBookPopup() {
+	toaster.textContent = "Book Deleted";
+	toaster.style.backgroundColor = "#f2dede";
+	toaster.style.color = "#a94442";
+	toaster.className = "show";
+	setTimeout(function () {
+		toaster.classList.remove("show");
+	}, 2000);
 }
