@@ -108,7 +108,7 @@ Book.prototype.updateStatus = function (state) {
 
 // Collect Input Fields
 let bookArray = [];
-// let book;
+let retrieved;
 function addBook() {
 	const title = document.querySelector("#title").value;
 	const author = document.querySelector("#author").value;
@@ -116,14 +116,23 @@ function addBook() {
 	const status = document.querySelector("#read").checked;
 
 	let book = new Book(title, author, pages, status);
-	bookArray.push(book);
-	showBook();
+	if (!localStorage.getItem("arrayOfBooks")) {
+		bookArray.push(book);
+		setItemToStorage(bookArray);
+		showBook();
+	} else {
+		getItemFromStorage();
+		retrieved.push(book);
+		setItemToStorage(retrieved);
+		showBook();
+	}
 }
 
 // Add books to page
 
 function showBook() {
-	cardSection.innerHTML = `${bookArray
+	getItemFromStorage();
+	cardSection.innerHTML = `${retrieved
 		.map(function (book, i) {
 			return `
        <div class="card" data-book-index= "${i}">
@@ -158,17 +167,12 @@ function isRead(book) {
 
 document.body.addEventListener("click", function (e) {
 	if (e.target.className == "read-update") {
-		// console.log(e.target.checked);
 		let status = e.target.checked;
-		console.log(status);
 		const checkIndex = e.target.parentNode.dataset.bookIndex;
-		console.log(checkIndex);
+		getItemFromStorage();
 		bookArray[checkIndex].updateStatus(status);
-		// e.target.parentNode.getElementById("card-status").textContent = bookArray[checkIndex].isRead
 		e.target.parentElement.querySelector("#card-status").textContent =
 			bookArray[checkIndex].isRead;
-		// console.log(bookArray[checkIndex].isRead)
-		// showBook()
 	}
 
 	if (e.target.className == "delete-book") {
@@ -182,10 +186,13 @@ document.body.addEventListener("click", function (e) {
 // Delete book function
 
 function deleteBook(index) {
-	bookArray.splice(index, 1);
+	// bookArray.splice(index, 1);
+	getItemFromStorage();
+	retrieved.splice(index, 1);
+	setItemToStorage(retrieved);
 }
 
-// Deleted book popup
+// Deleted book Toaster
 
 function deleteBookPopup() {
 	toaster.textContent = "Book Deleted";
@@ -196,3 +203,18 @@ function deleteBookPopup() {
 		toaster.classList.remove("show");
 	}, 2000);
 }
+
+// function to save to localStorage
+
+function setItemToStorage(arr) {
+	localStorage.setItem("arrayOfBooks", JSON.stringify(arr));
+}
+
+// function to retrieve from localStorage
+
+function getItemFromStorage() {
+	retrieved = JSON.parse(localStorage.getItem("arrayOfBooks"));
+}
+
+// Load  books on page load
+window.addEventListener("load", showBook);
