@@ -170,9 +170,10 @@ document.body.addEventListener("click", function (e) {
 		let status = e.target.checked;
 		const checkIndex = e.target.parentNode.dataset.bookIndex;
 		getItemFromStorage();
-		bookArray[checkIndex].updateStatus(status);
+		retrieved[checkIndex].updateStatus(status);
 		e.target.parentElement.querySelector("#card-status").textContent =
-			bookArray[checkIndex].isRead;
+			retrieved[checkIndex].isRead;
+		setItemToStorage(retrieved)
 	}
 
 	if (e.target.className == "delete-book") {
@@ -213,7 +214,9 @@ function setItemToStorage(arr) {
 // function to retrieve from localStorage
 
 function getItemFromStorage() {
-	retrieved = JSON.parse(localStorage.getItem("arrayOfBooks"));
+	retrieved = JSON.parse(localStorage.getItem("arrayOfBooks")).map(function(book){
+		return book = new Book(book.title,book.author,book.pages,book.isRead)
+	});
 }
 
 // Load  books on page load
