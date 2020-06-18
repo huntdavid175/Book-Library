@@ -165,6 +165,8 @@ function isRead(book) {
 	}
 }
 
+// Update book read status here and delte book here
+
 document.body.addEventListener("click", function (e) {
 	if (e.target.className == "read-update") {
 		let status = e.target.checked;
@@ -173,7 +175,7 @@ document.body.addEventListener("click", function (e) {
 		retrieved[checkIndex].updateStatus(status);
 		e.target.parentElement.querySelector("#card-status").textContent =
 			retrieved[checkIndex].isRead;
-		setItemToStorage(retrieved)
+		setItemToStorage(retrieved);
 	}
 
 	if (e.target.className == "delete-book") {
@@ -214,8 +216,11 @@ function setItemToStorage(arr) {
 // function to retrieve from localStorage
 
 function getItemFromStorage() {
-	retrieved = JSON.parse(localStorage.getItem("arrayOfBooks")).map(function(book){
-		return book = new Book(book.title,book.author,book.pages,book.isRead)
+	// Create objects as new Object from the Book constructor again to get acces to the Book prototype function
+	retrieved = JSON.parse(localStorage.getItem("arrayOfBooks")).map(function (
+		book
+	) {
+		return (book = new Book(book.title, book.author, book.pages, book.isRead));
 	});
 }
 
